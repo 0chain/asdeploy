@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source new_config.sh
+source config.sh
 
 get_deployment() {
     SHARDER=$(cat cfg/numsharders.txt)
