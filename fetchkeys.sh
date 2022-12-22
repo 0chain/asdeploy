@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source new_config.sh
+source config.sh
 
 FILES="./*_keys.json"
 
