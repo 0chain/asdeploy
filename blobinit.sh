@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source new_blobberconfig.sh
+source blobberconfig.sh
 
 get_blobber_repo() {
 	git clone https://github.com/0chain/blobber.git -b docker-deploy-fix
