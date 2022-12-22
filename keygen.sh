@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source new_config.sh
+source config.sh
 
 cli_input_deployment() {
   echo -e "\n Please input the following: \n"
