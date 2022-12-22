@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source new_blobberconfig.sh
+source blobberconfig.sh
 
 cli_input_deployment() {
   echo -e "\n Please input the following: \n"
