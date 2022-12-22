@@ -90,18 +90,18 @@ then
 	mv zdeployment-docker-deploy z
 fi
 
-wget https://sas.zcdn.uk/dl/new_config.sh -O new_config.sh
-wget https://sas.zcdn.uk/dl/new_keygen.sh -O new_keygen.sh
-wget https://sas.zcdn.uk/dl/new_fetchkeys.sh -O new_fetchkeys.sh
-wget https://sas.zcdn.uk/dl/new_sharekeys.sh -O new_sharekeys.sh
-wget https://sas.zcdn.uk/dl/new_minerdeploy.sh -O z/docker-deploy/new_minerdeploy.sh
-wget https://sas.zcdn.uk/dl/new_sharderdeploy.sh -O z/docker-deploy/new_sharderdeploy.sh
-wget https://sas.zcdn.uk/dl/new_nginx.sh -O new_nginx.sh
-wget https://sas.zcdn.uk/dl/new_blobberconfig.sh -O new_blobberconfig.sh
-wget https://sas.zcdn.uk/dl/new_blobgen.sh -O new_blobgen.sh
-wget https://sas.zcdn.uk/dl/new_blobinit.sh -O new_blobinit.sh
-wget https://sas.zcdn.uk/dl/new_blobrun.sh -O new_blobrun.sh
-wget https://sas.zcdn.uk/dl/new_blobdel.sh -O new_blobdel.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/config.sh -O config.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/keygen.sh -O keygen.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/fetchkeys.sh -O fetchkeys.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/sharekeys.sh -O sharekeys.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/minerdeploy.sh -O minerdeploy.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/sharderdeploy.sh -O sharderdeploy.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/nginx.sh -O nginx.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobberconfig.sh -O blobberconfig.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobgen.sh -O blobgen.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobinit.sh -O blobinit.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobrun.sh -O blobrun.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobdel.sh -O blobdel.sh
 
 URL=$(cat cfg/url.txt)
 ipaddr=$(curl api.ipify.org)
