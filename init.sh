@@ -84,10 +84,10 @@ sudo chmod 777 /var/run/docker.sock
 if [[ ! -d z ]]
 then
 	apt install zip unzip -y
-	wget https://zcdn.uk/wp-content/uploads/2022/11/zdeployment-docker-deploy.zip
-	unzip zdeployment-docker-deploy.zip
-	rm zdeployment-docker-deploy.zip
-	mv zdeployment-docker-deploy z
+#	wget https://zcdn.uk/wp-content/uploads/2022/11/zdeployment-docker-deploy.zip
+#	unzip zdeployment-docker-deploy.zip
+#	rm zdeployment-docker-deploy.zip
+#	mv zdeployment-docker-deploy z
 fi
 
 wget https://raw.githubusercontent.com/0chain/asdeploy/main/config.sh -O config.sh
