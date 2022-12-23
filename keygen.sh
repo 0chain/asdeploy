@@ -321,7 +321,11 @@ EOF
 cli_input_deployment
 
 # Backup Previous
-backup_previous
+if [[ "$1" == "keep" ]] ; then
+  echo "KEEPING SAME KEYS"
+else
+  backup_previous
+fi
 
 # Setting up binaries
 set_binaries_and_config
