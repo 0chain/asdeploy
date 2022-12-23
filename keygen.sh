@@ -70,6 +70,8 @@ set_binaries_and_config() {
     NETDOM="devnet-0chain.net"
   elif [ "$NETWORK" == "ex1" ] || [ "$NETWORK" == "as1" ] ; then
     NETDOM="testnet-0chain.net"
+  elif [ "$NETWORK" == "beta" ] ; then
+    NETDOM="zus.network"
   else
     NETDOM="0chain.net"
   fi  
