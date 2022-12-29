@@ -90,18 +90,18 @@ then
 #	mv zdeployment-docker-deploy z
 fi
 
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/config.sh -O config.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/keygen.sh -O keygen.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/fetchkeys.sh -O fetchkeys.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/sharekeys.sh -O sharekeys.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/minerdeploy.sh -O minerdeploy.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/sharderdeploy.sh -O sharderdeploy.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/nginx.sh -O nginx.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobberconfig.sh -O blobberconfig.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobgen.sh -O blobgen.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobinit.sh -O blobinit.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobrun.sh -O blobrun.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/main/blobdel.sh -O blobdel.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/config.sh -O config.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/keygen.sh -O keygen.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/fetchkeys.sh -O fetchkeys.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/sharekeys.sh -O sharekeys.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/minerdeploy.sh -O minerdeploy.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/sharderdeploy.sh -O sharderdeploy.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/nginx.sh -O nginx.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/blobberconfig.sh -O blobberconfig.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/blobgen.sh -O blobgen.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/blobinit.sh -O blobinit.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/blobrun.sh -O blobrun.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/blobdel.sh -O blobdel.sh
 
 URL=$(cat cfg/url.txt)
 ipaddr=$(curl api.ipify.org)
