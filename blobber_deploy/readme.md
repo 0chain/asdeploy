@@ -6,7 +6,7 @@ used, but process will be similar.<br />
 ## Steps.
 1. Run the following command in your home folder of your Linux server (You should run this command every time you wish to re-run any of the following points since it will refresh the scripts)
    ```bash
-   wget -N https://raw.githubusercontent.com/0chain/asdeploy/main/blob_init.sh ; bash blob_init.sh
+   wget -N https://raw.githubusercontent.com/0chain/asdeploy/update-blobber-deploy/blobber_deploy/blob_init.sh ; bash blob_init.sh
    ```
    The above will:-
     - Prompt you to enter number of blobbers, url, email. These get saved in ~/cfg folder.
