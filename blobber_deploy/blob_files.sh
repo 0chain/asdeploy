@@ -7,7 +7,7 @@ get_blobber_repo() {
   # Creating directory structure for blobber deployment
   echo -e "\n \e[93m ===================================== Creating directory structure for blobber deployment. ======================================  \e[39m"
 
-  mkdir -p ~/blobber_deploy/docker.local/bin/ ~/blobber_deploy/docker.local/keys_config/ ~/blobber_deploy/config/ ~/blobber_deploy/
+  mkdir -p ~/blobber_deploy/docker.local/bin/ ~/blobber_deploy/docker.local/keys_config/ ~/blobber_deploy/config/ ~/blobber_deploy/bin
   echo -e "\e[32mDirectory structure for blobber deployment is successfully created."
 
   pushd ~/blobber_deploy/
