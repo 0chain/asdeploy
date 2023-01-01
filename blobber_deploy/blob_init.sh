@@ -2,7 +2,7 @@
 
 export PATH=$PATH:/root/bin
 source ~/.profile
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_config.sh -O blob_func.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_config.sh -O blob_config.sh
 source ~/blob_func.sh
 
 cd ~
