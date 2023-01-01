@@ -37,14 +37,54 @@ status_tools_utilities() {
   fi
 }
 
-spinner() {
-  SECONDS=0
-  while [[ SECONDS -lt 100 ]]; do
-    for ((i = 0; i < ${#chars}; i++)); do
-      sleep 0.5
-      echo -e -en "${chars:$i:1}" "\r"
-    done
-  done
+#To generate keys for blobber and validators.
+gen_key() {
+    echo -e "\n \e[93m ===================================== Creating wallet to generate key b0$2node$1_keys.json. ======================================  \e[39m"
+    ./zwallet getbalance --config config.yaml --wallet b0$2node$1_keys.json --configDir . --silent
+    PUBLICKEY=$( jq -r '.keys | .[] | .public_key' b0$2node$1_keys.json )
+    PRIVATEKEY=$( jq -r '.keys | .[] | .private_key' b0$2node$1_keys.json )
+    CLIENTID=$( jq -r .client_id b0$2node$1_keys.json )
+    echo $PUBLICKEY > b0$2node$1_keys.txt
+    echo $PRIVATEKEY >> b0$2node$1_keys.txt
+    if [[ $2 == "b" ]] && [[ $1 -gt 0 ]]; then
+      echo $3 >> b0$2node$1_keys.txt
+      echo 505$1 >> b0$2node$1_keys.txt
+    elif [[ $2 == "v" ]] && [[ $1 -gt 0 ]]; then
+      echo $3 >> b0$2node$1_keys.txt
+      echo 506$1 >> b0$2node$1_keys.txt
+    fi
+}
+
+#To generate binaries of zwalletcli and zboxcli
+set_binaries_and_config() {
+  echo -e "\n \e[93m ===================================== Creating blockworker config. ======================================  \e[39m"
+  echo "---" > config.yaml
+  if [ "$NETWORK" == "potato" ] || [ "$NETWORK" == "bcv1" ] ; then
+    NETDOM="devnet-0chain.net"
+  elif [ "$NETWORK" == "ex1" ] || [ "$NETWORK" == "as1" ] ; then
+    NETDOM="testnet-0chain.net"
+  elif [ "$NETWORK" == "x" ] ; then
+    NETDOM="zcntest.net"
+  elif [ "$NETWORK" == "beta" ] ; then
+    NETDOM="zus.network"
+  else
+    NETDOM="0chain.net"
+  fi  
+  echo "block_worker: https://${NETWORK}.${NETDOM}/dns" >> config.yaml
+  echo "signature_scheme: bls0chain" >> config.yaml
+  echo "min_submit: 50" >> config.yaml
+  echo "min_confirmation: 50" >> config.yaml
+  echo "confirmation_chain_length: 3" >> config.yaml
+  echo "max_txn_query: 5" >> config.yaml
+  echo "query_sleep_time: 5" >> config.yaml
+
+  echo -e "\n \e[93m ===================================== Downloading zwallet & zbox binaries. ======================================  \e[39m"
+  wget https://github.com/0chain/zboxcli/releases/download/v1.3.11/zbox-linux.tar.gz
+  tar -xvf zbox-linux.tar.gz
+  rm zbox-linux.tar.gz
+  wget https://github.com/0chain/zwalletcli/releases/download/v1.1.7/zwallet-linux.tar.gz
+  tar -xvf zwallet-linux.tar.gz
+  rm zwallet-linux.tar.gz
 }
 
 append_logs() {
@@ -55,76 +95,5 @@ append_logs() {
     ((step_count++))
   else
     echo "$text " $(date +"%Y-%m-%d %H:%M:%S") >>$log_path
-  fi
-}
-
-progress_bar_fn() {
-  local DURATION=$1
-  local INT=0.25 # refresh interval
-
-  local TIME=0
-  local CURLEN=0
-  local SECS=0
-  local FRACTION=0
-
-  local FB=2588 # full block
-
-  trap "echo -e $(tput cnorm); trap - SIGINT; return" SIGINT
-
-  echo -ne "$(tput civis)\r$(tput el)│" # clean line
-
-  local START=$(date +%s%N)
-
-  while [[ $SECS -lt $DURATION ]]; do
-    local COLS=$(tput cols)
-
-    # main bar
-    local L=$(bc -l <<<"( ( $COLS - 5 ) * $TIME  ) / ($DURATION-$INT)" | awk '{ printf "%f", $0 }')
-    local N=$(bc -l <<<$L | awk '{ printf "%d", $0 }')
-
-    [ $FRACTION -ne 0 ] && echo -ne "$(tput cub 1)" # erase partial block
-
-    if [ $N -gt $CURLEN ]; then
-      for i in $(seq 1 $((N - CURLEN))); do
-        echo -ne \\u$FB
-      done
-      CURLEN=$N
-    fi
-
-    # partial block adjustment
-    FRACTION=$(bc -l <<<"( $L - $N ) * 8" | awk '{ printf "%.0f", $0 }')
-
-    if [ $FRACTION -ne 0 ]; then
-      local PB=$(printf %x $((0x258F - FRACTION + 1)))
-      echo -ne \\u$PB
-    fi
-
-    # percentage progress
-    local PROGRESS=$(bc -l <<<"( 100 * $TIME ) / ($DURATION-$INT)" | awk '{ printf "%.0f", $0 }')
-    echo -ne "$(tput sc)"                  # save pos
-    echo -ne "\r$(tput cuf $((COLS - 6)))" # move cur
-    echo -ne "│ $PROGRESS%"
-    echo -ne "$(tput rc)" # restore pos
-
-    TIME=$(bc -l <<<"$TIME + $INT" | awk '{ printf "%f", $0 }')
-    SECS=$(bc -l <<<$TIME | awk '{ printf "%d", $0 }')
-
-    # take into account loop execution time
-    local END=$(date +%s%N)
-    local DELTA=$(bc -l <<<"$INT - ( $END - $START )/1000000000" |
-      awk '{ if ( $0 > 0 ) printf "%f", $0; else print "0" }')
-    sleep $DELTA
-    START=$(date +%s%N)
-  done
-
-  echo $(tput cnorm)
-  trap - SIGINT
-}
-
-progress_bar() {
-  if [[ $development == true ]]; then # If development mode is enabled then progress bar will be shown
-    progress_bar_fn $1
-  else
-    sleep $1
   fi
 }

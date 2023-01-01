@@ -2,7 +2,8 @@
 
 export PATH=$PATH:/root/bin
 source ~/.profile
-source ./blob_func.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_config.sh -O blob_func.sh
+source ~/blob_func.sh
 
 cd ~
 mkdir -p ~/cfg
@@ -74,7 +75,7 @@ DOCKERCOMPOSEVER=v2.2.3 ; sudo apt install docker.io -y; sudo systemctl enable -
 sudo chmod 777 /var/run/docker.sock
 
 echo -e "\n \e[93m =============================================== Fetching other dependent scripts i.e. needed to deploy the blobbers. =================================================  \e[39m"
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_nginx.sh -O nginx.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_nginx.sh -O blob_nginx.sh
 wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_config.sh -O blob_config.sh
 wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_gen.sh -O blob_gen.sh
 wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_files.sh -O blob_files.sh
