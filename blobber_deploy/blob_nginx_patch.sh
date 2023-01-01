@@ -41,16 +41,7 @@ nginx_setup() {
   check_and_install_tools nginx
   echo -e "\n \e[93m ============================================== Adding proxy pass to nginx config ===============================================  \e[39m"
   pushd ${HOME}/blobber_deploy/
-  cat <<\EOF >blobber.$DOMAIN
-server {
-   server_name subdomain;
-   add_header 'Access-Control-Expose-Headers' '*';
-   location / {
-       # First attempt to serve request as file, then
-       # as directory, then fall back to displaying a 404.
-       try_files $uri $uri/ =404;
-   }
-EOF
+
   for l in $(seq 1 $BLOBBER)
     do
     echo "
@@ -65,17 +56,10 @@ EOF
         proxy_pass http://localhost:506${l}/;
     }" >> ./blobber.$DOMAIN
     done
-  
-  echo "}" >> ./blobber.$DOMAIN
-
-  sed -i "s/subdomain/$DOMAIN/g" "./blobber.$DOMAIN"
-  sudo mv blobber.$DOMAIN /etc/nginx/sites-available/
-  sudo ln -s /etc/nginx/sites-available/blobber.$DOMAIN /etc/nginx/sites-enabled/blobber.$DOMAIN &> /dev/null
+  # sed -e '/server {/a\' -e 'cat blobber.$DOMAIN' /etc/nginx/sites-available/default
+  # sudo mv blobber.$DOMAIN /etc/nginx/sites-available/
   popd
-  check_and_install_tools certbot
-  check_and_install_tools python3-certbot-nginx
-  echo -e "\e[37mAdding SSL to $DOMAIN. \e[73m"
-  sudo certbot --nginx -d $DOMAIN -m $EMAIL --agree-tos -n
+  sudo systemctl reload nginx
   # SLEEPTIME=$(awk 'BEGIN{srand(); print int(rand()*(3600+1))}'); echo "0 0,12 * * * root sleep $SLEEPTIME && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
 }
 

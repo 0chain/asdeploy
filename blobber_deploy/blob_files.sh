@@ -133,9 +133,3 @@ patch_configs() {
 get_blobber_repo
 
 patch_configs
-
-
-# Generating keys for blobbers
-#for n in $(seq 1 $BLOBBER); do
-#  b_key $n b $URL $EMAIL
-#done
