@@ -86,6 +86,7 @@ EOF
   check_and_install_tools python3-certbot-nginx
   echo -e "\e[37mAdding SSL to $DOMAIN. \e[73m"
   sudo certbot --nginx -d $DOMAIN -m $EMAIL --agree-tos -n
+  # SLEEPTIME=$(awk 'BEGIN{srand(); print int(rand()*(3600+1))}'); echo "0 0,12 * * * root sleep $SLEEPTIME && certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
 }
 
 BLOBBER=$(cat ~/cfg/numblobbers.txt)
