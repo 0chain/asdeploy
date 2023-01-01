@@ -18,7 +18,6 @@ used, but process will be similar.<br />
     ```bash
     bash blob_nginx.sh
     ```
-    This creates a blob folder with requisite Operational Wallets/Keys. If you run this script again, the existing blobber folder will be backed up and a new one created.<br /><br />
 3. Then you need to generate Operational Keys for your blobber and validator. We only recommend 1 blobber per server in production, but more may be used testnets.
     ```bash
     bash blob_gen.sh
