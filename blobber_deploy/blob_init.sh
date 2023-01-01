@@ -74,12 +74,12 @@ DOCKERCOMPOSEVER=v2.2.3 ; sudo apt install docker.io -y; sudo systemctl enable -
 sudo chmod 777 /var/run/docker.sock
 
 echo -e "\n \e[93m =============================================== Fetching other dependent scripts i.e. needed to deploy the blobbers. =================================================  \e[39m"
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blob_nginx.sh -O nginx.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blob_config.sh -O blob_config.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blob_gen.sh -O blob_gen.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blob_files.sh -O blob_files.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blob_run.sh -O blob_run.sh
-wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blob_del.sh -O blob_del.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_nginx.sh -O nginx.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_config.sh -O blob_config.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_gen.sh -O blob_gen.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_files.sh -O blob_files.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_run.sh -O blob_run.sh
+wget https://raw.githubusercontent.com/0chain/asdeploy/upgrade_blob_deploy/blobber_deploy/blob_del.sh -O blob_del.sh
 
 #checking if ip is already added the to DNS & is it resolving or not.
 check_dns
