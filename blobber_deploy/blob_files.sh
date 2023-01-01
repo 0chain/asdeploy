@@ -106,11 +106,6 @@ get_blobber_repo() {
     fi
     sudo chmod +x ~/blobber_deploy/docker.local/bin/p0blobber.start.sh
 
-    # create setup network for sharder
-    echo -e "\n \e[93m ===================================== Creating network setup script file for sharder. ======================================  \e[39m"
-    docker network create --driver=bridge --subnet=198.18.0.0/15 --gateway=198.18.0.255 testnet0 || true
-    echo -e "\e[32m  network setup file is successfully created."
-
   popd
 
 }
