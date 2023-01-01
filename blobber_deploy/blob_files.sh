@@ -1,7 +1,6 @@
 #!/bin/bash
 
 source ~/blob_config.sh
-source ./blob_config.sh
 
 get_blobber_repo() {
   # Creating directory structure for blobber deployment
@@ -20,7 +19,6 @@ get_blobber_repo() {
 
     # create Cleanup script for blobbers & validators
     echo -e "\n \e[93m ===================================== Creating cleanup script file for blobbers & validators. ======================================  \e[39m"
-    rm -rf ~/blobber_deploy/docker.local/bin/*
     wget_cleanup_script="$(wget https://raw.githubusercontent.com/0chain/blobber/staging/docker.local/bin/clean.sh -O ~/blobber_deploy/docker.local/bin/clean.sh 2>&1 | grep "HTTP" | awk '{print $6}')"
     if [[ $wget_cleanup_script == 200 ]]; then
       echo -e "\e[32m  clean.sh script file is successfully downloaded. \e[23m"
@@ -43,7 +41,6 @@ get_blobber_repo() {
 
     # create postgres entrypoint script for blobbers postgres
     echo -e "\n \e[93m ===================================== Creating postgres entrypoint script for blobbers postgres. ======================================  \e[39m"
-    rm -rf ~/blobber_deploy/bin/*
     wget_pg_entry_script="$(wget https://raw.githubusercontent.com/0chain/blobber/staging/bin/postgres-entrypoint.sh -O ~/blobber_deploy/bin/postgres-entrypoint.sh 2>&1 | grep "HTTP" | awk '{print $6}')"
     if [[ $wget_pg_entry_script == 200 ]]; then
       echo -e "\e[32m  postgres-entrypoint.sh file is successfully downloaded. \e[23m"
@@ -55,7 +52,6 @@ get_blobber_repo() {
 
     # create 0chain_blobber.yaml file
     echo -e "\n \e[93m ===================================== Creating 0chain_blobber.yaml config file. ======================================  \e[39m"
-    rm -rf ~/blobber_deploy/config/*
     wget_blobber_yaml="$(wget https://raw.githubusercontent.com/0chain/blobber/staging/config/0chain_blobber.yaml -O ~/blobber_deploy/config/0chain_blobber.yaml 2>&1 | grep "HTTP" | awk '{print $6}')"
     if [[ $wget_blobber_yaml == 200 ]]; then
       echo -e "\e[32m  0chain_blobber.yaml file is successfully downloaded. \e[23m"
@@ -86,7 +82,6 @@ get_blobber_repo() {
 
     # create docker-compose file for blobber & validator
     echo -e "\n \e[93m ===================================== Creating docker-compose file for blobber & validator. ======================================  \e[39m"
-    rm -rf ~/blobber_deploy/docker.local/p0docker-compose.*
     wget_docker_compose="$(wget https://raw.githubusercontent.com/0chain/blobber/staging/docker.local/p0docker-compose.yml -O ~/blobber_deploy/docker.local/p0docker-compose.yml 2>&1 | grep "HTTP" | awk '{print $6}')"
     if [[ $wget_docker_compose == 200 ]]; then
       echo -e "\e[32m  p0docker-compose.yml file is successfully downloaded. \e[23m"
