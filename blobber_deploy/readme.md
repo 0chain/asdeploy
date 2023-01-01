@@ -22,16 +22,16 @@ used, but process will be similar.<br />
     ```bash
     bash blob_gen.sh
     ```
-    This creates a blob folder with requisite Operational Wallets/Keys. If you run this script again, the existing blobber folder will be backed up and a new one created.<br /><br />
+    This creates a blob folder with requisite Operational Wallets/Keys. If you run this script again, the existing blobber folder will be backed up and a new one created.<br />
 4. You will then need to initialize the blobber repo and configure it for your blobber(s):
     ```bash
     bash blob_files.sh
-    ```<br /><br />
+    ```
 5. You then need to run the following command:
    ```bash
    bash blob_run.sh
    ```
-   This will launch the blobber docker containers for each blobber, then attempt to delegate funds in order to make each blobber operational.<br /><br />
+   This will launch the blobber docker containers for each blobber, then attempt to delegate funds in order to make each blobber operational.<br />
 6. You then need to run the following command:
    ```bash
    docker ps -a
