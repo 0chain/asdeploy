@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source config.sh
-pushd blob
+source blob_config.sh
+pushd ~/blobber_deploy/
 echo "Fauceting tokens.."
 
 NUMBLOBBERS=$( cat ~/cfg/numblobbers.txt )
