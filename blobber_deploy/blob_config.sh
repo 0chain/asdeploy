@@ -1,1 +1,1 @@
-NETWORK="dev"
+NETWORK="beta"
