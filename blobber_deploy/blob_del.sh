@@ -1,9 +1,11 @@
 #!/bin/bash
 
-source config.sh
-pushd blob
+source blob_func.sh
+source blob_config.sh
+pushd ~/blobber_deploy/
 echo "Fauceting tokens.."
 
+set_binaries_and_config
 NUMBLOBBERS=$( cat ~/cfg/numblobbers.txt )
 
 for (( b = 1 ; b <= NUMBLOBBERS ; b++ )) ; do 

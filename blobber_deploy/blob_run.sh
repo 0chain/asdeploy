@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source config.sh
+source ./blob_config.sh
 
-cd blobber
+cd ~/blobber_deploy
 ./docker.local/bin/blobber.init.setup.sh
 exists=$(docker network ls --filter name=testnet0 -q)
 if [[ ! $exists ]] ; then
@@ -12,5 +12,5 @@ cd ..
 
 NUMBLOBBERS=$( cat ~/cfg/numblobbers.txt )
 for (( b = 1 ; b <= NUMBLOBBERS ; b++ )) ; do 
-	cd ~/blobber/docker.local/blobber$b ; sudo ../bin/p0blobber.start.sh ; cd ~
+	cd ~/blobber_deploy/docker.local/blobber$b ; sudo ../bin/p0blobber.start.sh ; cd ~
 done
